@@ -7,6 +7,7 @@ RUN \
 	/install-devel.sh && \
 	su - evil -c 'yay -S --needed --noconfirm python-pip streamlink-git ffmpeg' && \
 	su - evil -c 'git clone https://github.com/Instinctlol/automatic-twitch-recorder.git -b webhooks atr' && \
+	chmod +x /*.sh && \
 	/rm-devel.sh
 
 CMD /bin/bash -c /startup.sh
