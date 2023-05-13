@@ -5,9 +5,10 @@ COPY shiz/ /
 
 RUN \
 	/install-devel.sh && \
-	su - evil -c 'yay -S --needed --noconfirm python-pip streamlink-git ffmpeg' && \
+	su - evil -c 'yay -S --needed --noconfirm python-pip streamlink ffmpeg' && \
 	su - evil -c 'git clone https://github.com/Instinctlol/automatic-twitch-recorder.git atr' && \
-	pip install -r /home/evil/atr/requirements.txt && \
+	sed 's/==.*//' /home/evil/atr/requirements.txt > r.txt && \
+	pip install -r r.txt && \
 	chmod +x /*.sh && \
 	/rm-devel.sh
 
